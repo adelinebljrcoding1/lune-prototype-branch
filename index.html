@@ -595,6 +595,7 @@
     border-top:1px solid #f0f0f0;
   }
   .next-wrap .btn-primary{border-color:#eeeeee;}
+  .sidebar-footer .btn-primary{border-color:#eeeeee;}
   .btn-primary.disabled{
     background:#e6e6e6;
     color:#a8a8a8;
@@ -625,7 +626,11 @@
     align-items:center;
     gap:14px;
     padding:21px 20px 14px;
+    transition:padding .25s ease;
   }
+  .screen-menu.header-compact .menu-header{padding:12px 20px 10px;}
+  .screen-menu.header-compact .lune-wordmark{font-size:18px;}
+  .lune-wordmark{transition:font-size .25s ease;}
   .hamburger-btn{
     border:none;
     background:none;
@@ -636,11 +641,27 @@
   .menu-logo{line-height:1;}
   .menu-logo-img{height:34px;width:auto;display:block;}
   .lune-wordmark{font-weight:900;font-size:22px;letter-spacing:3px;color:var(--green-dark);}
+  .menu-logo-group{display:flex;align-items:baseline;gap:8px;}
+  .menu-branch-label{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    font-size:14px;
+    font-weight:400;
+    letter-spacing:.02em;
+    color:var(--green-mid);
+    transform:translateY(1px);
+  }
   .menu-filters{
     display:flex;
     gap:10px;
     padding:0 20px 14px;
+    max-height:60px;
+    opacity:1;
+    overflow:hidden;
+    transition:max-height .25s ease, opacity .2s ease, padding .25s ease;
   }
+  .screen-menu.header-compact .menu-filters{max-height:0;opacity:0;padding-top:0;padding-bottom:0;}
   .filter-pill{
     display:flex;
     align-items:center;
@@ -725,14 +746,16 @@
   /* ---- Sort & Filters screen ---- */
   .screen-filters{background:#fff;}
   .filters-header{
-    display:flex;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
     align-items:center;
-    justify-content:space-between;
     padding:6px 10px 12px 4px;
     border-bottom:1px solid #eee;
     flex-shrink:0;
   }
-  .filters-header h2{margin:0;font-size:17px;font-weight:800;color:#111;}
+  .filters-header h2{margin:0;font-size:17px;font-weight:800;color:#111;text-align:center;grid-column:2;}
+  .filters-header .back-btn{grid-column:1;justify-self:start;}
+  .filters-header .filters-reset{grid-column:3;justify-self:end;}
   .filters-reset{
     border:none;
     background:none;
@@ -760,9 +783,9 @@
     background:#fff;
     color:#111;
     font-size:13px;
-    font-weight:700;
+    font-weight:400;
     padding:11px 16px;
-    border-radius:10px;
+    border-radius:0;
     cursor:pointer;
     white-space:nowrap;
   }
@@ -779,10 +802,10 @@
     position:relative;
     height:4px;
     background:#e2e2e2;
-    border-radius:2px;
+    border-radius:0;
     margin:0 9px;
   }
-  .filters-slider-range{position:absolute;top:0;bottom:0;left:0;right:0;background:#0a0a0a;border-radius:2px;}
+  .filters-slider-range{position:absolute;top:0;bottom:0;left:0;right:0;background:#0a0a0a;border-radius:0;}
   .filters-slider-handle{
     position:absolute;
     top:50%;
@@ -790,7 +813,7 @@
     height:18px;
     background:#fff;
     border:2px solid #0a0a0a;
-    border-radius:4px;
+    border-radius:0;
     transform:translate(-50%,-50%);
   }
   .filters-dietary-row{
@@ -804,13 +827,13 @@
   }
   .filters-dietary-row:last-child{border-bottom:none;}
   .filters-dietary-name{font-size:15px;font-weight:700;color:#111;}
-  .filters-dietary-sub{font-size:12px;color:#9a9a9a;margin-top:2px;}
+  .filters-dietary-sub{font-size:12px;color:#9a9a9a;margin-top:6px;}
   .filters-checkbox{
     width:22px;
     height:22px;
     flex-shrink:0;
     border:1.5px solid #ccc;
-    border-radius:5px;
+    border-radius:0;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -831,7 +854,7 @@
     font-size:16px;
     font-weight:700;
     padding:16px 20px;
-    border-radius:999px;
+    border-radius:0;
     cursor:pointer;
     display:flex;
     align-items:center;
@@ -843,7 +866,7 @@
     color:#0a0a0a;
     font-size:12px;
     font-weight:800;
-    border-radius:999px;
+    border-radius:0;
     padding:2px 9px;
   }
   .menu-section-title{
@@ -949,6 +972,7 @@
   .screen-menu.search-active .menu-filters,
   .screen-menu.search-active .menu-toolbar{display:none;}
   .screen-menu.search-active .search-bar-row{display:block;}
+  .screen-menu.search-active .menu-body{border-top:none;}
   .search-input-pill{
     display:flex;
     align-items:center;
@@ -1038,7 +1062,7 @@
     background:none;
     padding:16px 0;
     font-size:17px;
-    font-weight:700;
+    font-weight:600;
     color:#111;
     cursor:pointer;
     text-align:left;
@@ -1046,6 +1070,9 @@
   .sidebar-footer{
     padding:14px 20px 26px;
   }
+  .sidebar-location-item{border-bottom:1px solid #eee;margin-bottom:6px;}
+  .sidebar-location-item span{flex:1;}
+  .sidebar-item-chevron{color:#9a9a9a;flex:0 0 auto;}
 
   /* ---- Menu detail (meal combo customization) screen ---- */
   .screen-mealdetail{background:#fff;}
@@ -1248,6 +1275,7 @@
     justify-content:space-between;
   }
   .btn-add:active{transform:scale(.98);}
+  #outlet-next-footer .btn-add{border-radius:0;justify-content:center;}
   .mealdetail-footer .btn-add{width:auto;flex:1;border-radius:0;}
   #add-btn-label,#add-btn-price{font-weight:400;}
 
@@ -1518,7 +1546,7 @@
   .cart-order-card .order-stepper{display:flex;align-items:center;gap:8px;}
   .cart-order-card .order-stepper .qty-btn{border-color:#eeeeee;}
   .cart-order-card .order-price{font-size:14px;font-weight:700;color:#111;}
-  .trash-btn{border:none;background:none;color:#111;cursor:pointer;padding:4px;}
+  .trash-btn{border:none;background:none;color:#d32f2f;cursor:pointer;padding:4px;}
   .discount-card{
     display:flex;
     align-items:center;
@@ -2460,20 +2488,6 @@
     border-radius:999px;
     padding:5px 12px;
   }
-  .bookmark-btn{
-    border:none;
-    background:none;
-    color:#ccc;
-    cursor:pointer;
-    padding:4px;
-    flex-shrink:0;
-    align-self:flex-start;
-    transition:color .2s cubic-bezier(.4,0,.2,1), transform .15s cubic-bezier(.4,0,.2,1);
-  }
-  .bookmark-btn:hover{color:#0a0a0a;}
-  .bookmark-btn:active{transform:scale(.88);}
-  .bookmark-btn.saved{color:#0a0a0a;}
-  .bookmark-btn.saved svg path{fill:currentColor;}
   .outlet-card-bottom{
     display:flex;
     align-items:center;
@@ -2486,17 +2500,6 @@
   }
   .outlet-status{display:flex;align-items:center;gap:4px;color:var(--green-mid);}
   .outlet-distance{display:flex;align-items:center;gap:4px;color:#9a9a9a;font-weight:400;}
-  .outlet-preferred-row{
-    display:none;
-    align-items:center;
-    justify-content:space-between;
-    margin-top:14px;
-    padding-top:14px;
-    border-top:1px solid #ece0be;
-    font-size:14px;
-    color:#111;
-  }
-  .outlet-card.selected .outlet-preferred-row{display:flex;}
   .outlet-next-footer{
     position:absolute;
     left:0;right:0;bottom:0;
@@ -2894,9 +2897,6 @@
               <span class="outlet-tag">Delivery</span>
             </div>
           </div>
-          <button class="bookmark-btn" onclick="event.stopPropagation(); this.classList.toggle('saved')">
-            <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v16l-6-4-6 4V4z"/></svg>
-          </button>
         </div>
         <div class="outlet-card-bottom">
           <span class="outlet-status">
@@ -2908,10 +2908,6 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
             4.34 km
           </span>
-        </div>
-        <div class="outlet-preferred-row">
-          <span>Set as preferred store</span>
-          <span class="toggle-switch" onclick="event.stopPropagation(); this.classList.toggle('on')"><span class="toggle-knob"></span></span>
         </div>
       </div>
       <div class="outlet-card" data-outlet="parkville" onclick="selectOutlet(this)">
@@ -2927,9 +2923,6 @@
               <span class="outlet-tag">Delivery</span>
             </div>
           </div>
-          <button class="bookmark-btn" onclick="event.stopPropagation(); this.classList.toggle('saved')">
-            <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v16l-6-4-6 4V4z"/></svg>
-          </button>
         </div>
         <div class="outlet-card-bottom">
           <span class="outlet-status">
@@ -2941,10 +2934,6 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
             7.30 km
           </span>
-        </div>
-        <div class="outlet-preferred-row">
-          <span>Set as preferred store</span>
-          <span class="toggle-switch" onclick="event.stopPropagation(); this.classList.toggle('on')"><span class="toggle-knob"></span></span>
         </div>
       </div>
         <div class="outlet-group-heading">Queensland <span class="count">3 outlets</span></div>
@@ -2961,9 +2950,6 @@
               <span class="outlet-tag">Delivery</span>
             </div>
           </div>
-          <button class="bookmark-btn" onclick="event.stopPropagation(); this.classList.toggle('saved')">
-            <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v16l-6-4-6 4V4z"/></svg>
-          </button>
         </div>
         <div class="outlet-card-bottom">
           <span class="outlet-status">
@@ -2975,10 +2961,6 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
             7.30 km
           </span>
-        </div>
-        <div class="outlet-preferred-row">
-          <span>Set as preferred store</span>
-          <span class="toggle-switch" onclick="event.stopPropagation(); this.classList.toggle('on')"><span class="toggle-knob"></span></span>
         </div>
       </div>
       <div class="outlet-card" data-outlet="goldsborough" onclick="selectOutlet(this)">
@@ -2994,9 +2976,6 @@
               <span class="outlet-tag">Delivery</span>
             </div>
           </div>
-          <button class="bookmark-btn" onclick="event.stopPropagation(); this.classList.toggle('saved')">
-            <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v16l-6-4-6 4V4z"/></svg>
-          </button>
         </div>
         <div class="outlet-card-bottom">
           <span class="outlet-status">
@@ -3008,10 +2987,6 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
             7.30 km
           </span>
-        </div>
-        <div class="outlet-preferred-row">
-          <span>Set as preferred store</span>
-          <span class="toggle-switch" onclick="event.stopPropagation(); this.classList.toggle('on')"><span class="toggle-knob"></span></span>
         </div>
       </div>
       </div>
@@ -3030,13 +3005,6 @@
               <span class="outlet-tag">Pick up</span>
             </div>
           </div>
-          <button class="bookmark-btn" onclick="event.stopPropagation(); this.classList.toggle('saved')">
-            <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v16l-6-4-6 4V4z"/></svg>
-          </button>
-        </div>
-        <div class="outlet-preferred-row">
-          <span>Set as preferred store</span>
-          <span class="toggle-switch" onclick="event.stopPropagation(); this.classList.toggle('on')"><span class="toggle-knob"></span></span>
         </div>
       </div>
       <div class="outlet-card" data-outlet="armadale" onclick="selectOutlet(this)">
@@ -3051,13 +3019,6 @@
               <span class="outlet-tag">Pick up</span>
             </div>
           </div>
-          <button class="bookmark-btn" onclick="event.stopPropagation(); this.classList.toggle('saved')">
-            <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v16l-6-4-6 4V4z"/></svg>
-          </button>
-        </div>
-        <div class="outlet-preferred-row">
-          <span>Set as preferred store</span>
-          <span class="toggle-switch" onclick="event.stopPropagation(); this.classList.toggle('on')"><span class="toggle-knob"></span></span>
         </div>
       </div>
       <div class="outlet-card" data-outlet="cbd-russell" onclick="selectOutlet(this)">
@@ -3072,13 +3033,6 @@
               <span class="outlet-tag">Pick up</span>
             </div>
           </div>
-          <button class="bookmark-btn" onclick="event.stopPropagation(); this.classList.toggle('saved')">
-            <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v16l-6-4-6 4V4z"/></svg>
-          </button>
-        </div>
-        <div class="outlet-preferred-row">
-          <span>Set as preferred store</span>
-          <span class="toggle-switch" onclick="event.stopPropagation(); this.classList.toggle('on')"><span class="toggle-knob"></span></span>
         </div>
       </div>
       <div class="outlet-card" data-outlet="cbd-lonsdale" onclick="selectOutlet(this)">
@@ -3093,20 +3047,13 @@
               <span class="outlet-tag">Pick up</span>
             </div>
           </div>
-          <button class="bookmark-btn" onclick="event.stopPropagation(); this.classList.toggle('saved')">
-            <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v16l-6-4-6 4V4z"/></svg>
-          </button>
-        </div>
-        <div class="outlet-preferred-row">
-          <span>Set as preferred store</span>
-          <span class="toggle-switch" onclick="event.stopPropagation(); this.classList.toggle('on')"><span class="toggle-knob"></span></span>
         </div>
       </div>
       </div>
     </div>
 
     <div class="outlet-next-footer" id="outlet-next-footer">
-      <button class="btn-add" onclick="goToPickTime()"><span>Next</span></button>
+      <button class="btn-add" onclick="confirmOutletChoice()"><span id="outlet-next-label">Next</span></button>
     </div>
   </div>
 
@@ -3278,13 +3225,16 @@
       <button class="hamburger-btn" onclick="openSidebar()">
         <svg width="22" height="22" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="7" x2="25" y2="7"/><line x1="7" y1="16" x2="25" y2="16"/><line x1="7" y1="25" x2="25" y2="25"/></svg>
       </button>
-      <div class="menu-logo"><span class="lune-wordmark">LUNE</span></div>
+      <div class="menu-logo-group">
+        <div class="menu-logo"><span class="lune-wordmark">LUNE</span></div>
+        <div class="menu-branch-label">Armadale</div>
+      </div>
     </div>
 
     <div class="menu-filters">
       <button class="filter-pill" style="flex:1;justify-content:space-between;" onclick="openPickTimeFromMenu()">
         <span>Pick up &middot; <span id="schedule-filter-label">Wed, 16th - 9:00 am</span></span>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
       </button>
     </div>
 
@@ -3775,7 +3725,7 @@
               <span class="qty-value" style="font-size:14px;">1</span>
               <button class="qty-btn" style="width:28px;height:28px;font-size:14px;border-radius:0;" onclick="changeMealQty(1)">+</button>
               <button class="trash-btn" onclick="removeCartOrder(this)">
-                <svg width="24" height="24" viewBox="-2.5 0 61 61" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M36 26v10.997c0 1.659-1.337 3.003-3.009 3.003h-9.981c-1.662 0-3.009-1.342-3.009-3.003v-10.997h16zm-2 0v10.998c0 .554-.456 1.002-1.002 1.002h-9.995c-.554 0-1.002-.456-1.002-1.002v-10.998h12zm-9-5c0-.552.451-1 .991-1h4.018c.547 0 .991.444.991 1 0 .552-.451 1-.991 1h-4.018c-.547 0-.991-.444-.991-1zm0 6.997c0-.551.444-.997 1-.997.552 0 1 .453 1 .997v6.006c0 .551-.444.997-1 .997-.552 0-1-.453-1-.997v-6.006zm4 0c0-.551.444-.997 1-.997.552 0 1 .453 1 .997v6.006c0 .551-.444.997-1 .997-.552 0-1-.453-1-.997v-6.006zm-6-5.997h-4.008c-.536 0-.992.448-.992 1 0 .556.444 1 .992 1h18.016c.536 0 .992-.448.992-1 0-.556-.444-1-.992-1h-4.008v-1c0-1.653-1.343-3-3-3h-3.999c-1.652 0-3 1.343-3 3v1z"/></svg>
+                <svg width="38" height="38" viewBox="-2.5 0 61 61" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M36 26v10.997c0 1.659-1.337 3.003-3.009 3.003h-9.981c-1.662 0-3.009-1.342-3.009-3.003v-10.997h16zm-2 0v10.998c0 .554-.456 1.002-1.002 1.002h-9.995c-.554 0-1.002-.456-1.002-1.002v-10.998h12zm-9-5c0-.552.451-1 .991-1h4.018c.547 0 .991.444.991 1 0 .552-.451 1-.991 1h-4.018c-.547 0-.991-.444-.991-1zm0 6.997c0-.551.444-.997 1-.997.552 0 1 .453 1 .997v6.006c0 .551-.444.997-1 .997-.552 0-1-.453-1-.997v-6.006zm4 0c0-.551.444-.997 1-.997.552 0 1 .453 1 .997v6.006c0 .551-.444.997-1 .997-.552 0-1-.453-1-.997v-6.006zm-6-5.997h-4.008c-.536 0-.992.448-.992 1 0 .556.444 1 .992 1h18.016c.536 0 .992-.448.992-1 0-.556-.444-1-.992-1h-4.008v-1c0-1.653-1.343-3-3-3h-3.999c-1.652 0-3 1.343-3 3v1z"/></svg>
               </button>
             </div>
             <div class="order-price">$12.00</div>
@@ -4321,6 +4271,11 @@
       </div>
 
       <div class="sidebar-body">
+        <button class="sidebar-item sidebar-location-item" onclick="openChangeLocation()">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+          <span>Armadale</span>
+          <svg class="sidebar-item-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
         <button class="sidebar-item" onclick="goHome()">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
           <span>Home</span>
@@ -4509,6 +4464,7 @@
     document.getElementById('outlet-flat-view').classList.add('hidden-step');
     document.querySelectorAll('.outlet-card').forEach(function(c){ c.classList.remove('selected'); });
     document.getElementById('outlet-next-footer').classList.remove('visible');
+    document.getElementById('outlet-next-label').textContent = 'Next';
 
     document.getElementById('screen-outlet-search').classList.remove('hidden');
     document.getElementById('location-permission-overlay').classList.add('open');
@@ -4516,7 +4472,36 @@
 
   function goBackFromOutletSearch(){
     document.getElementById('screen-outlet-search').classList.add('hidden');
+    if (changeLocationFromMenu) {
+      changeLocationFromMenu = false;
+      document.getElementById('screen-menu').classList.remove('hidden');
+      return;
+    }
     goToHQOrder();
+  }
+
+  var changeLocationFromMenu = false;
+  function openChangeLocation(){
+    closeSidebar();
+    hideAllScreens();
+    document.getElementById('outlet-group-view').classList.remove('hidden-step');
+    document.getElementById('outlet-flat-view').classList.add('hidden-step');
+    document.querySelectorAll('.outlet-card').forEach(function(c){ c.classList.remove('selected'); });
+    document.getElementById('outlet-next-footer').classList.remove('visible');
+    document.getElementById('outlet-next-label').textContent = 'Save';
+    changeLocationFromMenu = true;
+    document.getElementById('screen-outlet-search').classList.remove('hidden');
+    document.getElementById('location-permission-overlay').classList.add('open');
+  }
+
+  function confirmOutletChoice(){
+    if (changeLocationFromMenu) {
+      changeLocationFromMenu = false;
+      document.getElementById('screen-outlet-search').classList.add('hidden');
+      document.getElementById('screen-menu').classList.remove('hidden');
+      return;
+    }
+    goToPickTime();
   }
 
   function closeLocationPermission(allow){
@@ -4524,6 +4509,10 @@
     if (allow) {
       document.getElementById('outlet-group-view').classList.add('hidden-step');
       document.getElementById('outlet-flat-view').classList.remove('hidden-step');
+      if (changeLocationFromMenu) {
+        var current = document.querySelector('#outlet-flat-view .outlet-card[data-outlet="armadale"]');
+        if (current) selectOutlet(current);
+      }
     }
   }
 
@@ -5117,6 +5106,16 @@
       e.target.nextElementSibling.focus();
     }
   });
+
+  /* Menu header shrinks (hides the Pick up selector) once the menu list is scrolled */
+  (function(){
+    var menuBody = document.querySelector('#screen-menu .menu-body');
+    var screenMenu = document.getElementById('screen-menu');
+    if(!menuBody || !screenMenu) return;
+    menuBody.addEventListener('scroll', function(){
+      screenMenu.classList.toggle('header-compact', menuBody.scrollTop > 12);
+    });
+  })();
 </script>
 
 </body>
